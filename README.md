@@ -5,7 +5,7 @@ Estudo de HTML Canvas, a partir do vídeo <a href="https://youtu.be/vAJEHf92tV0"
 | -------------  | --- |
 | :sparkles: Nome        | **Estudo de Html Canvas**
 | :label: Tecnologias | HTML, CSS, Javascript
-| :rocket: URL         | 
+| :rocket: URL         | https://enyus.github.io/canvasstudy/
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
 ![](https://media.giphy.com/media/YjgNtUi04yG8AtZvcY/giphy-downsized.gif#vitrinedev)
