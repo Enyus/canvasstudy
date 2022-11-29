@@ -1,5 +1,16 @@
-# ```<canvas>```
+# Estudo de ```<canvas>```
 Estudo de HTML Canvas, a partir do vídeo <a href="https://youtu.be/vAJEHf92tV0" target="_blank">Learn HTML Canvas: Pixels & Physics</a> de Frank´s Laboratory. Pelo nome do canal, vou chamar o instrutor de Frank, pois não lembro de ele ter se apresentado.
+
+| :placard: Vitrine.Dev |     |
+| -------------  | --- |
+| :sparkles: Nome        | **Estudo de Html Canvas**
+| :label: Tecnologias | HTML, CSS, Javascript
+| :rocket: URL         | 
+
+<!-- Inserir imagem com a #vitrinedev ao final do link -->
+![](https://media.giphy.com/media/YjgNtUi04yG8AtZvcY/giphy-downsized.gif#vitrinedev)
+
+# Detalhes do Projeto
 
 ## Imagem
 Deve-se usar uma imagem convertida em base 64 (imagem em código), o que pode ser feito através de sites <a href="https://www.base64-image.de/encode" target="_blank">como este</a>. Isso é necessário para podermos ler as propriedades da imagem pixel a pixel.

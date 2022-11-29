@@ -12,16 +12,42 @@ window.addEventListener('load', function() {
             this.originX = Math.floor(x);
             this.originY = Math.floor(y);
             this.color = color;
-            this.size = 5;
-            this.vx = Math.random() * 2 - 1;
-            this.vy = Math.random() * 2 - 1;
+            this.size = this.effect.gap;
+            this.vx = 0;
+            this.vy = 0;
+            this.ease = 0.2;
+            this.friction = 0.8;
+            this.dx = 0;
+            this.dy = 0;
+            this.distance = 0;
+            this.force = 0;
+            this.angle = 0;
         }
         draw(context) {
+            context.fillStyle = this.color;
             context.fillRect(this.x, this.y, this.size, this.size);
         }
         update() {
-            this.x += this.vx;
-            this.y += this.vy;
+            // Distâncias em relação ao mouse:
+            this.dx = this.effect.mouse.x - this.x;
+            this.dy = this.effect.mouse.y - this.y;
+            this.distance = (this.dx * this.dx + this.dy * this.dy);
+            // Determinando a força com que as partículas serão afastadas do mouse
+            this.force = -this.effect.mouse.radius / this.distance;
+
+            if (this.distance < this.effect.mouse.radius) {
+                this.angle = Math.atan2(this.dy, this.dx);
+                this.vx += this.force * Math.cos(this.angle);
+                this.vy += this.force * Math.sin(this.angle);
+            }
+
+            this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease;
+            this.y += (this.vy *= this.friction) + (this.originY - this.y) * this.ease;
+        }
+        warp() {
+            this.x = Math.random() * this.effect.width;
+            this.y = Math.random() * this.effect.height;
+            this.ease = 0.2;
         }
     }
 
@@ -35,7 +61,16 @@ window.addEventListener('load', function() {
             this.centerY = this.height * 0.5;
             this.x = this.centerX - this.image.width * 0.5;
             this.y = this.centerY - this.image.height * 0.5;
-            this.gap = 5; // Define a "resolução" da imagem gerada novamente em pixels.
+            this.gap = 3; // Define a "resolução" da imagem gerada novamente em pixels.
+            this.mouse = {
+                radius: 10000,
+                x: undefined,
+                y: undefined
+            };
+            window.addEventListener('mousemove', event => {
+                this.mouse.x = event.x;
+                this.mouse.y = event.y;
+            })
         }
         init(context) {
             context.drawImage(this.image, this.x, this.y);
@@ -61,6 +96,9 @@ window.addEventListener('load', function() {
         update() {
             this.particleArray.forEach(particle => particle.update());
         }
+        warp() {
+            this.particleArray.forEach(particle => particle.warp());
+        }
     }
 
     function animate () {
@@ -72,5 +110,12 @@ window.addEventListener('load', function() {
 
     const effect = new Effect(canvas.width, canvas.height);
     effect.init(ctx);
-    // animate();
+
+    animate();
+
+    // Warp Button
+    const warpButton = document.getElementById("warpButton")
+    warpButton.addEventListener('click', function() {
+        effect.warp();
+    })
 })
