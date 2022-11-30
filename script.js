@@ -71,6 +71,14 @@ window.addEventListener('load', function() {
                 this.mouse.x = event.x;
                 this.mouse.y = event.y;
             })
+            window.addEventListener('touchmove', event => {
+                this.mouse.x = event.targetTouches[0].clientX;
+                this.mouse.y = event.targetTouches[0].clientY;
+            })
+            window.addEventListener('touchend', event => {
+                this.mouse.x = 0;
+                this.mouse.y = 0;
+            })
         }
         init(context) {
             context.drawImage(this.image, this.x, this.y);
