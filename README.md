@@ -69,3 +69,4 @@ window.addEventListener('touchend', event => {
 
 ### O Problema de Performance no mobile nem é tão perceptível se vc tiver um celular top:
 <img src="https://media.giphy.com/media/5xtAxtvNdyV6nd2kWF/giphy-downsized.gif" alt="rodando o aplicativo em um celular top">
+(O telefone usado acima é um Samsung S10 Plus)
